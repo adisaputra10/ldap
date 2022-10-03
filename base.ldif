@@ -1,0 +1,17 @@
+dn: dc=hadoop,dc=com
+dc: hadoop
+objectClass: top
+objectClass: domain
+
+dn: cn=ldapadm,dc=hadoop,dc=com
+objectClass: organizationalRole
+cn: ldapadm
+description: LDAP Manager
+
+dn: ou=People,dc=hadoop,dc=com
+objectClass: organizationalUnit
+ou: People
+
+dn: ou=Group,dc=hadoop,dc=com
+objectClass: organizationalUnit
+ou: Group
