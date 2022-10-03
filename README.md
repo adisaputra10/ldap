@@ -25,3 +25,40 @@ ldapadd -x -W -D "cn=ldapadm,dc=hadoop,dc=com" -f base.ldif
 ldapsearch -D cn="ldapadm,dc=hadoop,dc=com" -W -b "dc=hadoop,dc=com" objectClass=*
 
 ```
+
+# set replika 
+```
+
+in Master
+backup config 
+slapcat -b cn=config -l openldap-config.ldif
+
+backup data
+slapcat -n 1 -l openldap-data.ldif
+
+scp openldap-data.ldif root@slave:/opt
+scp openldap-config.ldif root@slave:/opt
+
+
+in Slave
+clean all data in Slave
+sudo rm -rf /etc/openldap/slapd.d/*
+sudo rm -rf /var/lib/openldap/*
+restore config
+cd /opt && sudo slapadd -b cn=config -l openldap-config.ldif -F /etc/openldap/slapd.d/
+restore data
+cd /opt && sudo slapadd -n 1 -l openldap-data.ldif -F /etc/openldap/slapd.d/
+
+
+
+In Master
+ldapadd -Y EXTERNAL -H ldapi:/// -f replikasi_master_mod_syncprov.ldif
+ldapadd -Y EXTERNAL -H ldapi:/// -f  replikasi_master_syncprov.ldif
+
+In Slave
+ldapadd -Y EXTERNAL -H ldapi:/// -f replikasi_slave_synrepl.ldif
+
+
+```
+
+
