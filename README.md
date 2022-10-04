@@ -21,8 +21,8 @@ ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/inetorgperson.ldif
 
 
 
-ldapadd -x -W -D "cn=ldapadm,dc=hadoop,dc=com" -f base.ldif
-ldapsearch -D cn="ldapadm,dc=hadoop,dc=com" -W -b "dc=hadoop,dc=com" objectClass=*
+ldapadd -x -W -D "cn=ldapadm,dc=example,dc=com" -f base.ldif
+ldapsearch -D cn="ldapadm,dc=example,dc=com" -W -b "dc=example,dc=com" objectClass=*
 
 ```
 
