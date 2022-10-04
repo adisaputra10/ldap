@@ -1,17 +1,17 @@
-dn: dc=hadoop,dc=com
-dc: hadoop
+dn: dc=example,dc=com
+dc: example
 objectClass: top
 objectClass: domain
 
-dn: cn=ldapadm,dc=hadoop,dc=com
+dn: cn=ldapadm,dc=example,dc=com
 objectClass: organizationalRole
 cn: ldapadm
 description: LDAP Manager
 
-dn: ou=People,dc=hadoop,dc=com
+dn: ou=People,dc=example,dc=com
 objectClass: organizationalUnit
 ou: People
 
-dn: ou=Group,dc=hadoop,dc=com
+dn: ou=Group,dc=example,dc=com
 objectClass: organizationalUnit
 ou: Group
