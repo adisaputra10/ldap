@@ -24,6 +24,20 @@ ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/inetorgperson.ldif
 ldapadd -x -W -D "cn=ldapadm,dc=example,dc=com" -f base.ldif
 ldapsearch -D cn="ldapadm,dc=example,dc=com" -W -b "dc=example,dc=com" objectClass=*
 
+
+yum install epel-release -y
+yum install -y phpldapadmin
+
+nano /etc/phpldapadmin/config.php
+$servers->setValue('server','host','127.0.0.1');
+$servers->setValue('server','port',389);
+$servers->setValue('login','bind_id','cn=ldapadm,dc=example,dc=com');
+$servers->setValue('login','attr','dn');
+ 
+ nano /etc/httpd/conf.d/phpldapadmin.conf
+ Require all granted
+
+ 
 ```
 
 # set replika 
