@@ -37,7 +37,7 @@ $servers->setValue('login','attr','dn');
  nano /etc/httpd/conf.d/phpldapadmin.conf
  Require all granted
 
- 
+ http://domain/phpldapadmin
 ```
 
 # set replika 
