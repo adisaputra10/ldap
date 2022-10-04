@@ -3,9 +3,3 @@ objectClass: olcModuleList
 cn: module
 olcModulePath: /usr/lib64/openldap
 olcModuleLoad: syncprov.la
-[root@ldap-master ~]# cat syncprov.ldif
-dn: olcOverlay=syncprov,olcDatabase={2}hdb,cn=config
-objectClass: olcOverlayConfig
-objectClass: olcSyncProvConfig
-olcOverlay: syncprov
-olcSpSessionLog: 100
